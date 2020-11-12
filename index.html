@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Первый экран</title>
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <!--<meta name="author" content="Codrops" />-->
+        <link rel="shortcut icon" href="../favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="/style.css" />
+        <link rel="stylesheet" href="/bootstrap.css" />
+    </head>
+
+    <body>
+        <!-- BURGER -->
+        <div class="mobile">
+            <a href="" class="mobile__burger">
+                <div class="burger"></div>
+            </a>
+        </div>
+        <!-- /BURGER -->
+
+        <!-- MAIN -->
+        <main class="main">
+            <div id="cbp-fbscroller" class="cbp-fbscroller">
+
+                <!-- HEADER -->
+                <section class="header header-fixed" id="fbsection1">
+                    <div class="container">
+                        <div class="row">
+                            <!-- LOGO -->
+                            <div class="header__block col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12">
+                                <ul>
+                                    <li>
+                                        <a href="">
+                                            <img src="/assets/images/logo_2.png" alt="" />
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- /LOGO -->
+                            <!-- DESCTOP MENU-->
+                            <div class="header__block col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12">
+                                <ul>
+                                    <li>
+                                        <a href="" class="link-three" contenteditable="true">Услуги</a>
+                                    </li>
+                                    <li>
+                                        <a href="" class="link-three">Приемущества</a>
+                                    </li>
+                                    <li>
+                                        <a href="" class="link-three">Портфолио</a>
+                                    </li>
+                                    <li>
+                                        <a href="" class="link-two">Обсудить проект</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- /DESCTOP MENU-->
+                        </div>
+                    </div>
+                </section>
+                <section class="header" id="fbsection1">
+                    <div class="container">
+                        <!-- HEADER SLIDER -->
+                        <div class="row">
+                            <div class="header__slider col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div id="carouselExampleFade" class="">
+                                    <ul class="carousel-inner">
+                                        <li class="carousel-item active" data-touch="true">
+                                            <div class="header__block">
+                                                <h1 class="header__title">
+                                                    <p class="header__title-line1"><span class="typed-text" id="title"></span><span class="cursor">&nbsp;</span></p>
+                                                    <p class="header__best-text"> <span class="header__border"></span> Web сайт.</p>
+                                                    <span class="header__title-line2">Для развития вашего бизнеса</span>
+                                                </h1>
+                                                <div class="header__description">
+                                                    <div class="header__info">
+                                                        <p>Современный</p>
+                                                        <p>Дизайн</p>
+                                                    </div>
+
+                                                    <div class="header__info">
+                                                        <p>
+                                                            Повысте количество заявок в 2 раза за 3 недели,
+                                                            заказ у нас сайт который продает и получите в
+                                                            подарок бесплатно 30 дней на ведение и улучшение
+                                                            вашего бизнеса
+                                                        </p>
+
+                                                        <div class="header__button">
+                                                            <nav>
+                                                                <a class="link-one">
+                                                                    <span class="text">Расчитать стоимость</span>
+                                                                    <span class="arrow"> </span>
+                                                                </a>
+                                                                <!--<a href="" class="link-two">Портфолио</a>-->
+                                                            </nav>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="header__scroll">
+                                    <div class="header__down"></div>
+                                    <p>scroll</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- HEADER SLIDER -->
+                    </div>
+                </section>
+                <!-- /HEADER -->
+				
+				<p>lorem ipsun</p>
+            </div>
+        </main>
+        <script src="assets/js/jquery-3.2.0.min.js"></script>
+
+        <script>
+            const typedTextSpan = document.querySelector(".typed-text");
+            const cursorSpan = document.querySelector(".cursor");
+
+            const textArray = ["Продающий", "Современный", "Уникальный"];
+            const typingDelay = 100;
+            const erasingDelay = 100;
+            const newTextDelay = 2000; // Delay between current and next text
+            let textArrayIndex = 0;
+            let charIndex = 0;
+
+            function type() {
+                if (charIndex < textArray[textArrayIndex].length) {
+                    if (!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+                    typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+                    charIndex++;
+                    setTimeout(type, typingDelay);
+                } else {
+                    cursorSpan.classList.remove("typing");
+                    setTimeout(erase, newTextDelay);
+                }
+            }
+
+            function erase() {
+                if (charIndex > 0) {
+                    if (!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+                    typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
+                    charIndex--;
+                    setTimeout(erase, erasingDelay);
+                } else {
+                    cursorSpan.classList.remove("typing");
+                    textArrayIndex++;
+                    if (textArrayIndex >= textArray.length) textArrayIndex = 0;
+                    setTimeout(type, typingDelay + 1100);
+                }
+            }
+
+            document.addEventListener("DOMContentLoaded", function () { // On DOM Load initiate the effect
+                if (textArray.length) setTimeout(type, newTextDelay + 250);
+            });
+        </script>
+    </body>
+
+</html>
